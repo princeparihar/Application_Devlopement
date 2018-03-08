@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class AddSubErr {
+    public static void main(String[] args) {
+        @SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+        System.out.println("Enter your first value: ");
+        double first = input.nextDouble();
+
+        System.out.println("Enter your first error term value: ");
+        double firsterror = input.nextDouble();
+        
+        System.out.println("Enter your second value: ");
+        double second = input.nextDouble();
+
+        System.out.println("Enter your second error term value: ");
+        double seconderror = input.nextDouble();
+        
+        double multi = first + second;
+        double divide = first - second;
+        double errorterm = firsterror + seconderror;
+
+
+        System.out.println("Product for " + first + " and " + second
+                + " is: \t\t" + multi);
+        System.out.println("Error Term for summation of" + first + "and" + second + "is:\t\t" + errorterm);
+        
+        System.out.println("Quotient for " + first + " and " + second
+                + " is: \t\t" + divide);
+        System.out.println("Error Term for subtraction of" + first + "and" + second + "is:\t\t" + errorterm);
+    }
+}
