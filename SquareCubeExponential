@@ -1,0 +1,52 @@
+package W9D5;
+import java.lang.Math;
+import java.util.Scanner;
+public class SquareCubeExpo {
+static Scanner calci = new Scanner(System.in); //Create scanner class object
+
+//Implementation for square/power operation
+public static String squareF(double measuredValue ,double errorTerm1) { 
+	double errorFraction1 = errorTerm1/measuredValue ;
+	double errorFraction2 = errorTerm1/measuredValue ;
+	double squareF1 = Math.pow(measuredValue, 2);
+	double adderrorFraction =  errorFraction1 + errorFraction2 ;
+	double squareF2 = squareF1 * adderrorFraction ;
+	String square = String.valueOf(squareF1)+" \u00B1 "+ String.valueOf(squareF2);
+	return square;
+}
+
+//Implementation for cube operation
+public static String cube(double measuredValue ,double errorTerm1) {
+	double errorFraction1 = errorTerm1/measuredValue ;
+	double errorFraction2 = errorTerm1/measuredValue ;
+	double cube1 = Math.pow(measuredValue, 3);
+	double addef =  errorFraction1 + errorFraction2 ;
+	double cube2 = cube1 * addef ;
+	String cube = String.valueOf(cube1)+" \u00B1 "+ String.valueOf(cube2);
+	return cube;
+}
+
+public static void main (String[] args ) {
+	
+	System.out.println("Enter the first Value\n");
+	double firstTerm = calci.nextDouble();
+	System.out.println("Enter the error term \n");
+	double errorTerm1Term = calci.nextDouble();
+	System.out.println("Press 'C' for performing cube operation and 'S' for square operation");
+	String operator = calci.next();
+	if (operator.equals("S" ) || operator.equals("s"))
+	{
+		String result = squareF(firstTerm, errorTerm1Term);
+		System.out.println(result);
+		}
+		else if (operator.equals("C") || operator.equals("c"))
+		{
+			String result1 = cube(firstTerm, errorTerm1Term);
+			System.out.println(result1);
+		}
+		else {
+			System.out.println("Invalid input: Program Terminated");
+		}	
+
+}
+}
