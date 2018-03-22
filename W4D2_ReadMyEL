@@ -1,0 +1,82 @@
+package readMyCode;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+
+public class ELReader {
+
+
+    public static final String SAMPLE_XLSM_FILE_PATH = "170013_B_AppDev_W10_EffortLogger.xlsx";
+
+    public static void main(String[] args) throws IOException, InvalidFormatException {
+        System.out.println("Workbook name: " + SAMPLE_XLSM_FILE_PATH);
+        // Creating a Workbook from an Excel file (.xls or .xlsx)
+        Workbook workbook = WorkbookFactory.create(new File(SAMPLE_XLSM_FILE_PATH));
+
+        // Retrieving the number of sheets in the Workbook
+        System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
+
+        /*
+           =============================================================
+           Iterating over all the sheets in the workbook (Multiple ways)
+           =============================================================
+        */
+
+        // Obtaining a sheetIterator and iterate over a it
+        Iterator<Sheet> sheetIterator = workbook.sheetIterator();
+           
+        int numberOfCells = 0;   
+        DataFormatter dataFormatter = new DataFormatter();
+                
+        while (sheetIterator.hasNext()) {
+        	Sheet sheet = sheetIterator.next();
+           
+        	System.out.println();
+            System.out.println("=> " + sheet.getSheetName());  // Print sheet name
+            System.out.println("Number of Rows = " + sheet.getPhysicalNumberOfRows());    // Direct formula to calculate number of rows
+                      
+      }
+      
+        /*
+           |==================================================================|
+           |Iterating over all the rows and columns in a Sheet (Multiple ways)|
+           |==================================================================|
+        */
+
+        // Getting the Sheet at index zero
+        Sheet sheet = workbook.getSheetAt(0);
+ 
+        // Obtaining a rowIterator and columnIterator and iterate over them
+        System.out.println("\n\nIterating over Rows and Columns using Iterator\n");
+        System.out.println("Row   No. of Column");
+        
+        Iterator<Row> rowIterator = sheet.rowIterator();
+        int i = 0; 
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();    // Moving the pointer to the next row
+              
+            //Direct formula to calculate the number of cells in a row. 
+            numberOfCells = row.getPhysicalNumberOfCells(); 
+            System.out.print(++i + "\t" + (numberOfCells) + "\t");        
+           
+        // Now let's iterate over the columns of the current row
+        Iterator<Cell> cellIterator = row.cellIterator();
+            
+        while (cellIterator.hasNext()) {
+               Cell cell = cellIterator.next();
+                
+               String cellValue = dataFormatter.formatCellValue(cell);
+               System.out.print(cellValue + "\t");     
+            }       
+            
+           System.out.println();
+                                                   
+       }
+
+        // Closing the workbook
+       workbook.close();
+    }
+}
