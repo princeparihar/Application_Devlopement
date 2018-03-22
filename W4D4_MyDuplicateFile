@@ -1,0 +1,27 @@
+package readMyCode;
+
+import org.apache.poi.ss.usermodel.*;
+import java.io.File;
+import java.io.FileOutputStream;
+
+public class DuplicateELogger {
+	
+	public static void main(String[] args) {
+		FileOutputStream dcopy = null;
+		try {
+			dcopy=new FileOutputStream(new File("Duplicate_Effort_Logger.xlsx"));
+					String SAMPLE_XLSX_FILE_PATH="170013_B_AppDev_W10_EffortLogger.xlsx";
+			Workbook workbook = WorkbookFactory.create(new File(SAMPLE_XLSX_FILE_PATH));
+			
+			workbook.write(dcopy);
+			workbook.close();
+			dcopy.flush();
+			dcopy.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
