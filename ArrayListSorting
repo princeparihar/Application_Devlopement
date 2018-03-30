@@ -1,0 +1,70 @@
+package ArraySearchTechniques;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListSorting {
+	
+	public static void main(String[] args) {
+		  
+      // sorting arrays having double values
+      
+		List<Double> testList=new ArrayList<Double>();
+		testList.add(0.5);
+		testList.add(0.2);
+		testList.add(0.9);
+		testList.add(0.1);
+		testList.add(0.1);
+		testList.add(0.1);
+		testList.add(0.54);
+		testList.add(0.71);
+		testList.add(0.71);
+		testList.add(0.71);
+		testList.add(0.92);
+		testList.add(0.12);
+		testList.add(0.65);
+		testList.add(0.34);
+		testList.add(0.62);
+		System.out.println("Given Array List having Double Values is " + " \n" + testList);
+		System.out.println ("\n Here is the Sorted Array List by Collections.sort");
+		Collections.sort(testList);
+		System.out.println(testList);
+		System.out.println("\n \n Here is the Sorted ArrayList into Descending Order");
+		Collections.reverse(testList);
+		System.out.println( testList);
+		System.out.println("\n Representing it one below another");
+		System.out.println(Arrays.asList(testList)+"\n");
+    
+	// sorting array having float value
+ 
+	List <Float> testFloatList = new ArrayList<Float>();
+	testFloatList.add(2.12F);
+	testFloatList.add(3.541F);
+	testFloatList.add(2.1F);
+	testFloatList.add(11.22F);
+	testFloatList.add(12F);
+	testFloatList.add(3.55F);
+	testFloatList.add(6.2214F);
+	System.out.println("The Float List to be sorted is \n"+ testFloatList +"\n");
+	testFloatList.sort(null);
+	System.out.println("The sorted list is \n" + testFloatList +"\n");
+
+// sprting array having string value
+
+		List <String> testStringList = new ArrayList<String>();
+		testStringList.add("m");
+		testStringList.add("h");
+		testStringList.add("l");
+		testStringList.add("f");
+		testStringList.add("k");
+		testStringList.add("p");
+		testStringList.add("s");
+		System.out.println("The string list to be sorted is \n" + testStringList+"\n");
+		
+		testStringList.sort(null);
+	System.out.println("The String Sorted List is \n" + testStringList+"\n");
+	
+
+	}
+	
+}
